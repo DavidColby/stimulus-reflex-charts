@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Job.create([{ name: 'Sales Representative' }, { name: 'Software Developer' }, { name: 'Company Mascot' }])
+
+100.times do
+  Applicant.create(status: ['active', 'inactive'].sample, job: Job.all.sample)
+end
