@@ -1,2 +1,21 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1>Applicant Tracking System Dashboard</h1>
+<div
+  data-controller="pie-chart"
+  data-pie-chart-labels-value="<%= @labels %>"
+  data-pie-chart-series-value="<%= @series %>"
+>
+  <div>
+    <h2>Applicants over time</h2>
+  </div>
+  <form>
+    <%= select_tag "job_id",
+      options_for_select(
+        Job.order(:name).pluck(:name, :id)
+      ),
+      include_blank: "All jobs",
+      data: {
+        action: "change->pie-chart#update"
+      } %>
+  </form>
+  <div data-pie-chart-target="chart"></div>
+</div>
